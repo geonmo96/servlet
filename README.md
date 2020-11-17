@@ -16,3 +16,5 @@ multipart/form-data
 // application.getrealpath(path) : path 폴더의 실질적인 경로를 반환
 // enctype="multipart/form-data" 으로 인코딩타입을 정한 경우 일반적(request.get..)으로 전달받을 수 없음
 // new DefaultFileRenamePolicy() > 중복된 이름의 경우 numbering이 부여됨
+
+- FileDownload.java 노이해
