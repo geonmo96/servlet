@@ -18,3 +18,27 @@ multipart/form-data
 // new DefaultFileRenamePolicy() > 중복된 이름의 경우 numbering이 부여됨
 
 - FileDownload.java 노이해
+
+sql 설정 : 
+create table test_board(
+id number(4) primary key,
+name varchar2(20),
+title varchar2(100),
+content varchar2(300),
+savedate date default sysdate,
+hit number(4) default 0,
+idgroup number(4),
+step number(4),
+indent number(4)
+);
+create sequence test_board_seq;              
+commit;
+
+sql 설명
+idgroup : 답글을 달면 원글의 아이디를 가져와서 같은 묶음(정렬)으로 하기 위함, desc(내림차순으로함, 최신글이 맨 위에 올라와야함) 
+step : 답글과 그 답글의 답글 혹은 더 밑으로 순서를 설정하기 위함, 
+	asc(오름차순으로함, 같은 idgroup의 순서를 정하기 위해 사용함)
+	sql문을 통해(update test_board set step = step+1 where idgroup = ? and step > ?) 같은 idgroup을 같고 
+		step(즉, 답글의 해당글의 step보다 큰 step을 일괄적으로 +1을 함)
+indent : 댓글과 대댓글 등 많은 글에대해 레벨을 결정함
+	
